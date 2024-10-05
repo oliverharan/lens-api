@@ -1,0 +1,15 @@
+[
+    {
+      "id": "1",
+      "name": "Lens 1",
+      "description": "Details about Lens 1",
+      "image": "/path-to-lens1.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Lens 2",
+      "description": "Details about Lens 2",
+      "image": "/path-to-lens2.jpg"
+    }
+  ]
+  
