@@ -23,6 +23,11 @@ const writeData = (data) => {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 };
 
+// Define a root route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Lens API! Use /lenses to access the lens data.');
+});
+
 // Get all lenses
 app.get('/lenses', (req, res) => {
   const lenses = readData();
