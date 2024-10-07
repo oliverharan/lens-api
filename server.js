@@ -2,12 +2,16 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Import CORS
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware for parsing JSON request bodies
 app.use(bodyParser.json());
+
+// Enable CORS for all requests
+app.use(cors());
 
 // Path to the data.json file
 const dataPath = path.join(__dirname, 'data.json');
@@ -22,11 +26,6 @@ const readData = () => {
 const writeData = (data) => {
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 };
-
-// Define a root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the Lens API! Use /lenses to access the lens data.');
-});
 
 // Get all lenses
 app.get('/lenses', (req, res) => {
