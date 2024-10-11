@@ -1,15 +1,48 @@
 [
     {
-      "id": "1",
-      "name": "Lens 1",
-      "description": "Details about Lens 1",
-      "image": "/path-to-lens1.jpg"
+      "id": 1,
+      "focalLength": "18 to 300mm (35mm Equivalent: 27 to 450mm)",
+      "maximumAperture": "f/3.5 to 6.3",
+      "lensMount": "Nikon F",
+      "lensFormatCoverage": "APS-C",
+      "focusType": "Autofocus",
+      "filterSize": "67 mm (Front)",
+      "minimumAperture": "f/22",
+      "angleOfView": "76° to 5° 20'",
+      "minimumFocusDistance": "1.57' / 48 cm",
+      "opticalDesign": "16 Elements in 12 Groups",
+      "imageStabilization": "Yes",
+      "image": "url_to_image1"
     },
     {
-      "id": "2",
-      "name": "Lens 2",
-      "description": "Details about Lens 2",
-      "image": "/path-to-lens2.jpg"
+      "id": 2,
+      "focalLength": "24 to 70mm (35mm Equivalent: 36 to 105mm)",
+      "maximumAperture": "f/2.8",
+      "lensMount": "Canon EF",
+      "lensFormatCoverage": "Full Frame",
+      "focusType": "Autofocus",
+      "filterSize": "77 mm (Front)",
+      "minimumAperture": "f/22",
+      "angleOfView": "84° to 34°",
+      "minimumFocusDistance": "1.25' / 38 cm",
+      "opticalDesign": "15 Elements in 12 Groups",
+      "imageStabilization": "Yes",
+      "image": "url_to_image2"
+    },
+    {
+      "id": 3,
+      "focalLength": "50mm",
+      "maximumAperture": "f/1.8",
+      "lensMount": "Sony E",
+      "lensFormatCoverage": "APS-C",
+      "focusType": "Autofocus",
+      "filterSize": "49 mm (Front)",
+      "minimumAperture": "f/22",
+      "angleOfView": "47°",
+      "minimumFocusDistance": "1.48' / 45 cm",
+      "opticalDesign": "6 Elements in 5 Groups",
+      "imageStabilization": "No",
+      "image": "url_to_image3"
     }
   ]
   
