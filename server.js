@@ -19,11 +19,13 @@ const dataPath = path.join(__dirname, 'data.json');
 // Read JSON data
 const readData = () => {
   const data = fs.readFileSync(dataPath);
-  return JSON.parse(data);
+  const parsedData = JSON.parse(data);
+  return parsedData.lenses || []; // Return the lenses array or an empty array if not found
 };
 
 // Write JSON data
-const writeData = (data) => {
+const writeData = (lenses) => {
+  const data = { lenses }; // Wrap lenses array inside an object
   fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
 };
 
