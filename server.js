@@ -7,8 +7,9 @@ const cors = require('cors'); // Import CORS
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware for parsing JSON request bodies
-app.use(bodyParser.json());
+// Middleware for parsing JSON request bodies and allowing larger payloads
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 // Enable CORS for all requests
 app.use(cors());
