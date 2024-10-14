@@ -31,17 +31,26 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 // Path to the data.json file
 const dataPath = path.join(__dirname, 'data.json');
 
-// Read JSON data
+// Function to read JSON data from data.json
 const readData = () => {
-  const data = fs.readFileSync(dataPath);
-  const parsedData = JSON.parse(data);
-  return parsedData.lenses || []; // Return the lenses array or an empty array if not found
+  try {
+    const data = fs.readFileSync(dataPath);
+    const parsedData = JSON.parse(data);
+    return parsedData.lenses || []; // Return the lenses array or an empty array if not found
+  } catch (error) {
+    console.error('Error reading data file:', error);
+    return [];
+  }
 };
 
-// Write JSON data
+// Function to write JSON data to data.json
 const writeData = (lenses) => {
-  const data = { lenses }; // Wrap lenses array inside an object
-  fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+  try {
+    const data = { lenses }; // Wrap lenses array inside an object
+    fs.writeFileSync(dataPath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error writing to data file:', error);
+  }
 };
 
 // Get all lenses
@@ -71,7 +80,7 @@ app.post('/lenses', (req, res) => {
   res.status(201).json(newLens);
 });
 
-// Update a lens
+// Update a lens by ID
 app.put('/lenses/:id', (req, res) => {
   const lenses = readData();
   const index = lenses.findIndex((lens) => lens.id === req.params.id);
@@ -84,7 +93,7 @@ app.put('/lenses/:id', (req, res) => {
   }
 });
 
-// Delete a lens
+// Delete a lens by ID
 app.delete('/lenses/:id', (req, res) => {
   const lenses = readData();
   const updatedLenses = lenses.filter((lens) => lens.id !== req.params.id);
@@ -94,6 +103,11 @@ app.delete('/lenses/:id', (req, res) => {
   } else {
     res.status(404).json({ message: 'Lens not found' });
   }
+});
+
+// Welcome message for root path
+app.get('/', (req, res) => {
+  res.send('Welcome to the Lens API');
 });
 
 // Start the server
