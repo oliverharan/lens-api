@@ -7,12 +7,26 @@ const cors = require('cors'); // Import CORS
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Define the allowed origins
+const allowedOrigins = ['http://localhost:3000', 'https://oliverharan.github.io'];
+
+// CORS configuration
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow these methods
+  allowedHeaders: ['Content-Type'], // Allow only the Content-Type header
+}));
+
 // Middleware for parsing JSON request bodies and allowing larger payloads
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
-
-// Enable CORS for all requests
-app.use(cors());
 
 // Path to the data.json file
 const dataPath = path.join(__dirname, 'data.json');
